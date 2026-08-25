@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday 🎂</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #16001f, #3b0754, #12001a);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 92%;
+    max-width: 500px;
+    text-align: center;
+    padding: 35px 20px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 40px rgba(255, 105, 180, 0.25);
+    animation: appear 1.5s ease;
+}
+
+h1 {
+    font-size: clamp(35px, 10vw, 60px);
+    color: #ff8bd1;
+    text-shadow: 0 0 15px #ff4db8;
+    animation: glow 2s infinite alternate;
+}
+
+.name {
+    font-size: clamp(28px, 8vw, 45px);
+    margin-top: 10px;
+    color: #fff;
+}
+
+.message {
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 20px 5px;
+    color: #fce8f7;
+}
+
+.cake {
+    font-size: 75px;
+    margin: 15px 0;
+    animation: bounce 1.5s infinite;
+}
+
+button {
+    border: none;
+    padding: 14px 25px;
+    border-radius: 30px;
+    background: #ff4db8;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 0 20px #ff4db8;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+}
+
+.balloon {
+    position: absolute;
+    font-size: 45px;
+    animation: float 5s ease-in-out infinite;
+}
+
+.b1 { left: 5%; top: 15%; }
+.b2 { right: 7%; top: 25%; animation-delay: 1s; }
+.b3 { left: 10%; bottom: 12%; animation-delay: 2s; }
+.b4 { right: 8%; bottom: 15%; animation-delay: 3s; }
+
+.heart {
+    position: absolute;
+    font-size: 25px;
+    animation: heartFloat 5s linear infinite;
+    opacity: 0;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(0.7) translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #ff4db8; }
+    to { text-shadow: 0 0 30px #ffb3e6; }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-35px) rotate(5deg); }
+}
+
+@keyframes heartFloat {
+    0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+    }
+    20% { opacity: 1; }
+    100% {
+        transform: translateY(-10vh) scale(1.3);
+        opacity: 0;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .container {
+        padding: 30px 15px;
+    }
+
+    .message {
+        font-size: 16px;
+    }
+
+    .cake {
+        font-size: 65px;
+    }
+
+    .balloon {
+        font-size: 35px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="balloon b1">🎈</div>
+<div class="balloon b2">🎈</div>
+<div class="balloon b3">🎈</div>
+<div class="balloon b4">🎈</div>
+
+<div class="container">
+
+    <div class="cake">🎂</div>
+
+    <h1>Happy Birthday!</h1>
+
+    <!-- Yahan naam change karo -->
+    <div class="name">Dear Areeba ❤️</div>
+
+    <p class="message">
+        May your special day be filled with happiness,
+        beautiful memories, endless smiles and lots of love. ✨
+        <br><br>
+        Keep smiling and keep shining! 💖
+    </p>
+
+    <button onclick="celebrate()">
+        🎁 Tap for a Surprise
+    </button>
+
+</div>
+
+<script>
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 7000);
+}
+
+setInterval(createHeart, 500);
+
+function celebrate() {
+    alert("🎉 HAPPY BIRTHDAY! 🎉\n\nMay all your dreams come true! ❤️");
+
+    for (let i = 0; i < 30; i++) {
+        setTimeout(createHeart, i * 80);
+    }
+}
+</script>
+
+</body>
+</html>
